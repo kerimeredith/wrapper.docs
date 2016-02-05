@@ -134,6 +134,8 @@
     <topicref href="cloudsystem/thirdparty.licensing.dita"
       navtitle="Open-Source and Third-Party Licensing" locktitle="yes"/>
     <topicref href="cloudsystem/licensing.dita"/>
+	<topicref href="cloudsystem/thirdparty.licensing.dita"/>
+    <topicref href="cloudsystem/CloudSystem-901-support-matrix.xml"/>
   </topicref>
 
   <topicref href="automation/csa.index.dita"/>

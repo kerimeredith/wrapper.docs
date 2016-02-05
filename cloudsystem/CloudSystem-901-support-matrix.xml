@@ -1,0 +1,1721 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Arbortext, Inc., 1988-2014, v.4002-->
+<!DOCTYPE book PUBLIC "-//Hewlett-Packard ESS//DTD DocBook V4.2-Based Extension//EN"
+ "C:/Program Files (x86)/PTC/Arbortext Editor/custom/doctypes/ess/ess.dtd">
+<book id="cs-support-901">
+<title>HP Helion CloudSystem 9.0 Update 1 Support Matrix</title>
+<bookinfo id="v30835749">
+<title>HP Helion CloudSystem 9.0 Update 1 Support Matrix</title>
+<keywordset><keyword>Helion</keyword><keyword>CloudSystem</keyword>
+<keyword>Helion Openstack</keyword><keyword>Cloud Service Automation</keyword>
+<keyword>Operations Orchestration</keyword><keyword>private cloud</keyword>
+<keyword>CloudSystem Foundation</keyword><keyword>CloudSystem Enterprise</keyword>
+<keyword>CloudSystem virtual appliances</keyword><keyword>OVSvAPP
+virtual appliance</keyword><keyword>ESXi management hypervisor</keyword>
+<keyword>KVM management hypervisor</keyword></keywordset>
+<mediaobject id="v30835750"><textobject id="v30835751">
+<textdata fileref="entities.ent" id="v30835753"/></textobject>
+</mediaobject>
+<mediaobject id="v30835754"><textobject id="v30835755">
+<textdata fileref="xml-profile.xml" id="v30835756"/></textobject>
+</mediaobject>
+<pubdate id="v30835758">December 2015</pubdate>
+<corpauthor id="v30835759"></corpauthor>
+<edition id="v30835760">1</edition>
+<productnumber id="v32703489">5900-4272</productnumber>
+<abstract id="v30835767">
+<title>About this guide</title>
+<para id="v30836288">This information is intended for Infrastructure
+Administrators using <emphasis role="bold">HP Helion CloudSystem Software
+9.0 Update 1</emphasis>, who are assigned to configure and provision
+compute resources for deployment and use in virtual data centers.</para>
+<para id="v33283434">This guide outlines the recommended and minimum
+hardware and software requirements and the solution integration tools
+that must be in place before installing CloudSystem.</para>
+</abstract>
+<copyright id="v30836289"><year id="v30836290">2014, 2015</year><holder
+id="v30836291">Hewlett-Packard Development Company, L.P.</holder>
+</copyright>
+<legalnotice id="v30836292"><para id="v30836293">Microsoft® and Windows®
+are trademarks of the Microsoft group of companies.</para><para
+id="v30836294">Red Hat® is a registered trademark of Red Hat, Inc.
+in the United States and other countries.</para><para id="v32703495"
+>VMware® vCenter™ and VMware vSphere® are registered trademarks of
+VMware, Inc. in the United States and/or other jurisdictions</para>
+<para id="v30836295">Confidential computer software. Valid license
+from HP required for possession, use or copying. Consistent with FAR
+12.211 and 12.212, Commercial Computer Software, Computer Software
+Documentation, and Technical Data for Commercial Items are licensed
+to the U.S. Government under vendor's standard commercial license.</para>
+<para id="v30836296">The information contained herein is subject to
+change without notice. The only warranties for HP products and services
+are set forth in the express warranty statements accompanying such
+products and services. Nothing herein should be construed as constituting
+an additional warranty. HP shall not be liable for technical or editorial
+errors or omissions contained herein.</para></legalnotice>
+</bookinfo>
+<toc id="v30836298"></toc>
+<chapter id="s_software-configure-85-install">
+<title>Software requirements</title>
+<indexterm id="v30766582" significance="normal"><primary>HP CloudSystem</primary>
+<secondary>software requirements</secondary></indexterm><indexterm
+id="v30766583" significance="normal"><primary>VMware vCenter Server</primary>
+<secondary>software requirements</secondary></indexterm><indexterm
+id="v30766584" significance="normal"><primary>Red Hat Enterprise Linux</primary>
+<secondary>software requirements</secondary></indexterm><indexterm
+id="v30766585" significance="normal"><primary>HP 3PAR StoreServ storage
+system</primary><secondary>software requirements</secondary></indexterm>
+<indexterm id="v30766586" significance="normal"><primary>HP OO Studio</primary>
+<secondary>software requirements</secondary></indexterm><indexterm
+id="v30766587" significance="normal"><primary>HP Operations Orchestration</primary>
+<secondary>software requirements</secondary></indexterm><indexterm
+id="v30766588" significance="normal"><primary>HP CSA</primary>
+<secondary>software requirements</secondary></indexterm>
+<para id="v32703496">CloudSystem supports heterogeneous hypervisors
+in this release.<itemizedlist>
+<listitem><para>ESXi or KVM are supported management hypervisor environments</para>
+</listitem>
+<listitem><para>ESXi, KVM and Hyper-V are supported simultaneously
+as compute nodes</para><para>For ESXi compute nodes, you must use
+the same ESXi version within a cluster.</para>
+</listitem>
+</itemizedlist></para>
+<para id="v30918779">If you plan to use multiple compute node types,
+make sure your configuration supports the options and features you
+require.</para>
+<section id="v33284472">
+<title>CloudSystem management hypervisor and compute node software
+requirements</title>
+<section>
+<title>Software embedded in CloudSystem and optional software</title>
+<table frame="all" id="v33284481">
+<title>Embedded and optional software </title>
+<tgroup cols="3" colsep="1" id="v33284482" rowsep="1">
+<colspec colname="col1" colwidth="1.15*"/>
+<colspec colname="col2" colwidth="0.80*"/>
+<colspec colname="col3" colwidth="1.06*"/>
+<thead>
+<row rowsep="1" valign="bottom"><entry align="left" valign="bottom"
+>Software</entry><entry align="left" valign="bottom">Version</entry>
+<entry align="left" valign="bottom">Notes</entry></row>
+</thead>
+<tbody>
+<row><entry><para><emphasis role="bold">HP Helion OpenStack</emphasis
+></para></entry><entry>1.1.1</entry><entry><para>Based on OpenStack
+Cloud Software, <emphasis role="bold">Juno</emphasis> release. </para
+><para>This version is included in HP Helion CloudSystem Foundation
+and is not a separate installation.</para></entry></row>
+<row><entry><para><emphasis role="bold">HP Cloud Service Automation
+(HP CSA)</emphasis> </para></entry><entry><para>4.50.0001</para></entry>
+<entry>This version is included in HP Helion CloudSystem Enterprise
+and is not a separate installation.</entry></row>
+<row><entry><emphasis role="bold">HP Operations Orchestration Studio</emphasis
+></entry><entry><para>10.21.0001</para></entry><entry>The executable
+file used to install this software is included in the HP Helion CloudSystem
+Tools 9.0 - Sept 2015 release zip, which is part of the HP Helion
+CloudSystem 9.0 release.</entry></row>
+<row><entry><emphasis role="bold">HP Operations Orchestration</emphasis
+></entry><entry>10.21.0001</entry><entry>This version is included
+in HP Helion CloudSystem Enterprise and is not a separate installation.</entry>
+</row>
+<row><entry><para><emphasis role="bold">HP Virtual Cloud Networking
+Open vSwitch vApp (OVSvApp)</emphasis></para><para>(Includes Open
+vSwitch 2.3.1)</para></entry><entry></entry><entry><para>The OVSvApp
+image is included in the HP Helion CloudSystem Tools 9.0 - Sept 2015
+release zip, which is part of the HP Helion CloudSystem 9.0 release.</para
+><para>Upload the OVSvApp image to your VMware datacenter so that
+the OVSvApp appliance is automatically installed on each ESXi compute
+hypervisor during activation.</para></entry></row>
+<row><entry><para><emphasis role="bold">(Optional) HP Helion Platform
+Services</emphasis><note>
+<para>Platform Services (DBaaS, DNSaaS, and ALS) are supported only
+in homogeneous configurations of CloudSystem. Management hypervisors
+and compute nodes must be all ESXi or all KVM.</para>
+<para>Hyper-V compute nodes are not supported.</para>
+</note></para></entry><entry><para>Helion Development Platform 1.2
+or 1.3, including:<itemizedlist>
+<listitem><para>Application Lifecycle Service (ALS)</para></listitem>
+<listitem><para>Database as a Service (DBaaS)</para></listitem>
+</itemizedlist></para><para>Domain Name System as a Service (DNSaaS)
+1.1.1</para></entry><entry><para>Helion Development Platform 1.2 is
+available from <ulink
+url="https://h20392.www2.hp.com/portal/swdepot/index.do">HP Software
+Depot</ulink>.</para><para>After installing 1.2, you can update to
+1.3. </para><para>For information about upgrading to Helion Development
+Platform 1.3, see the <quote>Platform Services, including Helion Development
+Platform and DNS as a Service</quote> chapter in the <citetitle>HP
+Helion CloudSystem 9.0 Update 1 Administrator Guide</citetitle> at <ulink
+role="newbrowser" url="http://www.hp.com/go/CloudSystem/docs">Enterprise
+Information Library</ulink>.</para></entry></row>
+</tbody>
+</tgroup>
+</table>
+</section>
+<section id="v33284469">
+<title>Management hypervisor supported configurations</title>
+<table frame="all" id="v30918780">
+<title>Management hypervisor supported configurations</title>
+<tgroup cols="4" colsep="1" id="v30918781" rowsep="1">
+<colspec colname="col1" colwidth="0.91*"/>
+<colspec colname="col2" colwidth="1.03*"/>
+<colspec colname="COLSPEC1" colwidth="1.03*"/>
+<colspec colname="col3" colwidth="1.03*"/>
+<thead>
+<row rowsep="1" valign="bottom"><entry align="left" valign="bottom"
+>Management hypervisor</entry><entry align="left" valign="bottom"
+>Compute node type</entry><entry align="left">VLAN support</entry>
+<entry align="left" valign="bottom">VxLAN support </entry></row>
+</thead>
+<tbody>
+<row><entry morerows="2"><emphasis role="bold">ESXi</emphasis></entry>
+<entry><para>ESXi</para><para>Use the same ESXi version for all hosts
+in the cluster.</para></entry><entry><para>Yes</para><para><superscript
+>Use Central Virtual Routing</superscript></para></entry><entry><para
+>Yes</para><para><superscript>Use Central Virtual Routing</superscript
+></para></entry></row>
+<row><entry>KVM</entry><entry><para>Yes </para><para><superscript
+>Use Central Virtual Routing</superscript></para></entry><entry><para
+>Yes (RHEL 7.0 only)</para><para><superscript>Use either Central Virtual
+Routing or Distributed Virtual Routing</superscript></para><para><superscript
+>Not supported in RHEL 7.1 because of a known issue in RHEL</superscript
+></para></entry></row>
+<row><entry>Hyper-V</entry><entry><para>Yes </para><para><superscript
+>Use Central Virtual Routing</superscript></para></entry><entry>No</entry>
+</row>
+<row><entry morerows="2"><emphasis role="bold">KVM</emphasis></entry>
+<entry>ESXi</entry><entry><para>Yes </para><para><superscript>Use
+Central Virtual Routing</superscript></para></entry><entry><para>Yes </para
+><para><superscript>Use Central Virtual Routing</superscript></para
+></entry></row>
+<row><entry>KVM</entry><entry><para>Yes </para><para><superscript
+>Use Central Virtual Routing</superscript></para></entry><entry><para
+>Yes (RHEL 7.0 only)</para><para><superscript>Use either Central Virtual
+Routing or Distributed Virtual Routing</superscript></para><para><superscript
+>Not supported in RHEL 7.1 because of a known issue in RHEL</superscript
+></para></entry></row>
+<row><entry>Hyper-V</entry><entry><para>Yes </para><para><superscript
+>Use Central Virtual Routing</superscript></para></entry><entry>No</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</section>
+<section id="v34686857">
+<title>VMware ESXi management hypervisor and compute node software
+requirements</title>
+<para>The following table lists supported VMware vCenter and ESXi
+host in CloudSystem management hypervisors and compute nodes.</para>
+<table frame="all" id="v33876416">
+<title>VMware ESXi management hypervisor and compute node software
+requirements</title>
+<tgroup cols="2" colsep="1" id="v33876417" rowsep="1">
+<colspec colname="col2" colwidth="1.65*"/>
+<colspec colname="col3" colwidth="0.86*"/>
+<thead>
+<row rowsep="1" valign="bottom"><entry align="left" valign="bottom"
+>Software version</entry><entry align="left" valign="bottom">Notes</entry>
+</row>
+</thead>
+<tbody>
+<row><entry><para><emphasis role="bold">VMware vCenter Server Appliance
+6</emphasis></para><para> (build 2559267 / installer build 2562643)</para
+><itemizedlist>
+<listitem><para>ESXi 6.0</para></listitem>
+</itemizedlist><para><emphasis role="bold">VMware vCenter Server Appliance
+5.5 U3</emphasis> </para><para>(build 3000347 / installer build 3000346)</para
+><itemizedlist>
+<listitem><para>ESXi 5.5 U3</para></listitem>
+<listitem><para>ESXi 5.5 U2e</para></listitem>
+<listitem><para>ESXi 5.5 U2</para></listitem>
+<listitem><para>ESXi 5.1 U3</para></listitem>
+<listitem><para>ESXi 5.1 U2</para></listitem>
+</itemizedlist><para><emphasis role="bold">VMware vCenter Server Appliance
+5.5 U2e</emphasis> </para><para>(build 2646489 / installer build 2646481)</para
+><itemizedlist>
+<listitem><para>ESXi 5.5 U2e</para></listitem>
+<listitem><para>ESXi 5.5 U2</para></listitem>
+<listitem><para>ESXi 5.1 U3</para></listitem>
+<listitem><para>ESXi 5.1 U2</para></listitem>
+</itemizedlist><para><emphasis role="bold">VMware vCenter Server Appliance
+5.5 U2</emphasis></para><para>(build 2063318 / installer build 2105955)</para
+><itemizedlist>
+<listitem><para>ESXi 5.5 U2</para></listitem>
+<listitem><para>ESXi 5.1 U3</para></listitem>
+<listitem><para>ESXi 5.1 U2</para></listitem>
+</itemizedlist><para><emphasis role="bold">VMware vCenter Server Appliance
+5.1 U3</emphasis> </para><para>(build 2306353 / installer build 2308385)</para
+><itemizedlist>
+<listitem><para>ESXi 5.1 U3</para></listitem>
+<listitem><para>ESXi 5.1 U2</para></listitem>
+</itemizedlist><para><emphasis role="bold">VMware vCenter Server Appliance
+5.1 U2</emphasis></para><para>(build 1474364 / installer build 1474365)</para
+><itemizedlist>
+<listitem><para>ESXi 5.1 U2</para></listitem>
+</itemizedlist></entry><entry><para>Available from <ulink
+role="newbrowser" url="http://software.hp.com">http://software.hp.com</ulink
+>. Select the virtualization software link.</para><para>For customized
+images, see <ulink
+url="http://h18004.www1.hp.com/products/servers/software/vmware/esxi-image.html "
+>Customize VMware ESXi Images for HP ProLiant Servers</ulink></para
+><para>To verify VMware guest operating systems, see the <ulink
+url="http://www.vmware.com/resources/compatibility/search.php?deviceCategory=software&amp;testConfig=16"
+>VMware Compatibility Guide</ulink> and type <quote>Guest OS</quote
+> in <quote role="bold">What are you looking for</quote> </para><para
+>For the VMware vSphere and vCloud suite build numbers table, see
+the <ulink
+url="http://kb.vmware.com/selfservice/microsites/search.do?language=en_US&amp;cmd=displayKC&amp;externalId=1014508#vCenter "
+>VMware Knowledge Base</ulink></para></entry></row>
+<row><entry><para><emphasis role="bold">VMware vCenter Server 6 for
+Windows</emphasis></para><para>(build 2559268 / installer build 2562643)</para
+><itemizedlist>
+<listitem><para>ESXi 6.0</para></listitem>
+</itemizedlist><para><emphasis role="bold">VMware vCenter Server 5.5
+U3 for Windows</emphasis></para><para>(build 3000241 / installer build
+3000346)</para><itemizedlist>
+<listitem><para>ESXi 5.5 U3</para></listitem>
+<listitem><para>ESXi 5.5 U2e</para></listitem>
+<listitem><para>ESXi 5.5 U2</para></listitem>
+<listitem><para>ESXi 5.1 U3</para></listitem>
+<listitem><para>ESXi 5.1 U2</para></listitem>
+</itemizedlist><para><emphasis role="bold">VMware vCenter Server 5.5
+U2e for Windows</emphasis></para><para>(build 2646482 / installer
+build 2646481)</para><itemizedlist>
+<listitem><para>ESXi 5.5 U2e</para></listitem>
+<listitem><para>ESXi 5.5 U2</para></listitem>
+<listitem><para>ESXi 5.1 U3</para></listitem>
+<listitem><para>ESXi 5.1 U2</para></listitem>
+</itemizedlist><para><emphasis role="bold">VMware vCenter Server 5.5
+U2 for Windows</emphasis> </para><para>(build 2001466 / installer
+build 2105955)</para><itemizedlist>
+<listitem><para>ESXi 5.5 U2</para></listitem>
+<listitem><para>ESXi 5.5 U1</para></listitem>
+<listitem><para>ESXi 5.5</para></listitem>
+<listitem><para>ESXi 5.1 U2</para></listitem>
+</itemizedlist><para><emphasis role="bold">VMware vCenter Server 5.1
+U3 for Windows</emphasis> </para><para>(build 2306353 / installer
+build 2308386)</para><itemizedlist>
+<listitem><para>ESXi 5.1 U3</para></listitem>
+<listitem><para>ESXi 5.1 U2</para></listitem>
+</itemizedlist><para><emphasis role="bold">VMware vCenter Server 5.1
+U2 for Windows </emphasis></para><para>(build 1473063 / installer
+build 1474365)</para><itemizedlist>
+<listitem><para>ESXi 5.1 U2</para></listitem>
+</itemizedlist></entry><entry></entry></row>
+</tbody>
+</tgroup>
+</table>
+</section>
+<section id="v34686870">
+<title>RHEL KVM management hypervisor software requirements</title>
+<table frame="all" id="v33284477">
+<title>RHEL KVM management hypervisor software requirements</title>
+<tgroup cols="2" colsep="1" id="v33284478" rowsep="1">
+<colspec colname="col2" colwidth="0.74*"/>
+<colspec colname="col3" colwidth="1.52*"/>
+<thead>
+<row rowsep="1" valign="bottom"><entry align="left" valign="bottom"
+>Software version</entry><entry align="left" valign="bottom">Notes</entry>
+</row>
+</thead>
+<tbody>
+<row><entry><para><emphasis role="bold">Red Hat Enterprise Linux 7.1</emphasis
+></para></entry><entry><para><emphasis role="bold">Required</emphasis
+>: Open vSwitch 2.3.1 must be manually installed <ulink
+role="newbrowser" url="http://openvswitch.org/download/">Open vSwitch
+2.3.1 download</ulink>.</para><para><emphasis role="bold">Required</emphasis
+>: Emulex be2net 10.7.140.4-1.rhel7u1 driver for HP Emulex server
+adapters. Download be2net from <ulink role="newbrowser"
+url="http://h20564.www2.hpe.com/hpsc/swd/public/readIndex?sp4ts.oid=5177951&amp;=en&amp;=en&amp;cc=us&amp;cc=us"
+>HP Support Center (HP ProLiant BL460c Gen 8 Server)</ulink>. Select
+your operating system, then expand <emphasis role="bold">Driver —
+Network</emphasis>.</para></entry></row>
+<row><entry><para><emphasis role="bold">Red Hat Enterprise Linux 7.0</emphasis
+></para></entry><entry><para><emphasis role="bold">Required</emphasis
+>: Open vSwitch 2.3.1 must be manually installed <ulink
+role="newbrowser" url="http://openvswitch.org/download/">Open vSwitch
+2.3.1 download</ulink>.</para><para><emphasis role="bold">Required</emphasis
+>: Emulex be2net 10.2.340.7-1 driver for HP Emulex server adapters.
+Download be2net from the <ulink role="newbrowser"
+url="http://h20564.www2.hpe.com/hpsc/swd/public/readIndex?sp4ts.oid=5177951&amp;=en&amp;=en&amp;cc=us&amp;cc=us"
+>HP Support Center (HP ProLiant BL460c Gen 8 Server)</ulink>. Select
+your operating system, then expand <emphasis role="bold">Driver —
+Network</emphasis>.</para><para>To verify Red Hat supported guest
+operating systems, see the <ulink
+url="https://access.redhat.com/certified-hypervisors">RedHat Customer
+Portal</ulink>.</para></entry></row>
+<row><entry><para><emphasis role="bold">Red Hat Enterprise Linux 6.5</emphasis
+></para></entry><entry><para><emphasis role="bold">Required</emphasis
+>: Open vSwitch 1.11.0 must be manually installed <ulink
+role="newbrowser" url="http://openvswitch.org/download/">Open vSwitch
+1.11.0 download</ulink>.</para><para>Optional: Emulex be2net driver
+4.4.245.0 (or higher) driver for HP Emulex server adapters. See <ulink
+role="newbrowser"
+url="http://www.emulex.com/downloads/oem-qualified/emc/drivers/linux40/rhel-5x/drivers/"
+>Citrix support</ulink>.</para><para>Distributed Virtual Routing is
+not supported when using RHEL 6.5.</para></entry></row>
+</tbody>
+</tgroup>
+</table>
+</section>
+<section id="v34686873">
+<title>RHEL KVM compute node software requirements</title>
+<para>To verify Red Hat supported guest operating systems, see the <ulink
+url="https://access.redhat.com/certified-hypervisors">RedHat Customer
+Portal</ulink>.</para>
+<table frame="all" id="v34393339">
+<title>RHEL KVM compute node software requirements</title>
+<tgroup cols="2" colsep="1" id="v34393340" rowsep="1">
+<colspec colname="col2" colwidth="0.65*"/>
+<colspec colname="col3" colwidth="1.35*"/>
+<thead>
+<row rowsep="1" valign="bottom"><entry align="left" valign="bottom"
+>Software version</entry><entry align="left" valign="bottom">Notes</entry>
+</row>
+</thead>
+<tbody>
+<row><entry morerows="1"><para><emphasis role="bold">Red Hat Enterprise
+Linux 7.1</emphasis></para></entry><entry><para><emphasis role="bold"
+>Required</emphasis>: Emulex be2net 10.7.140.4-1.rhel7u1 driver for
+HP Emulex server adapters. Download be2net from <ulink role="newbrowser"
+url="http://h20564.www2.hpe.com/hpsc/swd/public/readIndex?sp4ts.oid=5177951&amp;=en&amp;=en&amp;cc=us&amp;cc=us"
+>HP Support Center (HP ProLiant BL460c Gen 8 Server)</ulink>. Select
+your operating system, then expand <emphasis role="bold">Driver —
+Network</emphasis>..</para></entry></row>
+<row><entry morerows="1"><para><emphasis role="bold">Required</emphasis
+>: Emulex be2net 10.2.340.7-1 driver for HP Emulex server adapters.
+Download be2net from <ulink role="newbrowser"
+url="http://h20564.www2.hpe.com/hpsc/swd/public/readIndex?sp4ts.oid=5177951&amp;=en&amp;=en&amp;cc=us&amp;cc=us"
+>HP Support Center (HP ProLiant BL460c Gen 8 Server)</ulink>. Select
+your operating system, then expand <emphasis role="bold">Driver —
+Network</emphasis>..</para><para>Open vSwitch will be automatically
+installed during activation.</para></entry></row>
+<row valign="top"><entry><para><emphasis role="bold">Red Hat Enterprise
+Linux 7.0</emphasis></para></entry></row>
+<row><entry><para><emphasis role="bold">Red Hat Enterprise Linux 6.6</emphasis
+></para></entry><entry morerows="1"><para><emphasis role="bold">Optional</emphasis
+>: Emulex be2net driver 4.4.245.0 (or higher) driver for HP Emulex
+server adapters. See <ulink role="newbrowser"
+url="http://www.emulex.com/downloads/oem-qualified/emc/drivers/linux40/rhel-5x/drivers/"
+>Citrix support</ulink>.</para><para>Open vSwitch will be automatically
+installed during activation.</para><para>Distributed Virtual Routing
+(DVR) is not supported when using RHEL 6.6 or 6.5.</para></entry></row>
+<row><entry><para><emphasis role="bold">Red Hat Enterprise Linux 6.5</emphasis
+></para></entry></row>
+</tbody>
+</tgroup>
+</table>
+</section>
+<section id="v34686876">
+<title>Hyper-V compute node software requirements</title>
+<table frame="all" id="v33284479">
+<title>Hyper-V compute node software requirements</title>
+<tgroup cols="2" colsep="1" id="v33284480" rowsep="1">
+<colspec colname="col2" colwidth="0.76*"/>
+<colspec colname="col3" colwidth="1.24*"/>
+<thead>
+<row rowsep="1" valign="bottom"><entry align="left" valign="bottom"
+>Software version</entry><entry align="left" valign="bottom">Notes</entry>
+</row>
+</thead>
+<tbody>
+<row><entry><para><emphasis role="bold">Microsoft Windows Server 2012
+R2 with Hyper-V (Datacenter Edition)</emphasis></para></entry><entry
+morerows="1"><para>Hyper-V is not supported as a management hypervisor.</para
+><para>Hyper-V compute nodes are not supported in Platform Services
+(Helion Development Platform and DNSaaS).</para><para>To verify Hyper-V
+supported guest operating systems, see <ulink role="newbrowser"
+url="https://technet.microsoft.com/en-us/library/cc794868(WS.10).aspx"
+>Supported guest operating systems</ulink>.</para></entry></row>
+<row><entry><para><emphasis role="bold">Microsoft Windows Server 2012
+R2 with Hyper-V (Standard Edition)</emphasis></para></entry></row>
+</tbody>
+</tgroup>
+</table>
+</section>
+</section>
+<section id="s_tools-configure-85-install">
+<title>CloudSystem and OpenStack CLI requirements</title>
+<indexterm id="v30766650" significance="normal"><primary>HP CloudSystem</primary>
+<secondary>tools requirements</secondary></indexterm>
+<para id="v30766651">The <literal moreinfo="none">CloudSystem-Tools-9.0.0.0.zip</literal
+> file contains a <command moreinfo="none">csstart</command> installation
+script and OpenStack CLI packages.</para>
+<table frame="all" id="v30766652">
+<title>Supported versions of operating systems for staging machines
+used to run <literal moreinfo="none">csstart</literal> and CLI packages</title>
+<tgroup cols="3" colsep="1" id="v30766653" rowsep="1">
+<colspec colname="col1"/>
+<colspec colname="col2"/>
+<colspec colname="col3"/>
+<thead>
+<row><entry align="left">CLI</entry><entry align="left">Execute on</entry>
+<entry align="left">Version</entry></row>
+</thead>
+<tbody>
+<row><entry><para><literal moreinfo="none">csstart</literal></para
+></entry><entry><para>Windows</para><para>Linux</para></entry><entry
+><para>Windows Version 8, 2008 R2 (32-bit and 64-bit)</para><para
+>Red Hat RHEL 6.5, 7.0, 7.1</para><para>Ubuntu 12.04</para></entry>
+</row>
+<row><entry><para>OpenStack CLI packages</para></entry><entry><para
+>Windows</para><para>Linux</para></entry><entry><para>Windows Version
+8, 2008 R2 (32-bit and 64-bit)</para><para>Red Hat RHEL 6.5, 7.0,
+7.1</para><para>Ubuntu 12.04</para></entry></row>
+<row><entry><para>CloudSystem CLI packages</para></entry><entry><para
+>CloudSystem management appliance</para><note>
+<para>The support dump command can be run on any appliance.</para>
+</note></entry><entry><para>CloudSystem CLIs are included in HP Helion
+CloudSystem Foundation and are not a separate installation.</para
+><para>See the <citetitle>HP Helion CloudSystem 9.0 Update 1 Command
+Line Interface Guide</citetitle> at <ulink role="newbrowser"
+url="http://www.hp.com/go/CloudSystem/docs">Enterprise Information
+Library</ulink>.</para></entry></row>
+</tbody>
+</tgroup>
+</table>
+</section>
+<section>
+<title>HP CSA content support</title>
+<para id="v33096984">Check the <ulink role="newbrowser"
+url="https://hpln.hp.com/group/cloud-service-automation-csa">HP Live
+Network</ulink> for updated HP CSA content packs and capsules. Content
+compatible with HP CSA 4.5 is supported with CloudSystem 9.0 Update
+1. For example, the HP CSA content for Matrix OE supports Matrix OE
+7.2 and higher.</para>
+<para id="v33096986">For information about HP CSA content, see the <citetitle
+>HP Cloud Service Automation Content Pack User Guide</citetitle>.
+This document is available from the <ulink role="newbrowser"
+url="http://www.hp.com/go/CloudSystem/docs">Enterprise Information
+Library</ulink>.</para>
+</section>
+<section id="s_browswer-requirements-85-install">
+<title>Browser requirements</title>
+<indexterm id="v30766645" significance="normal"><primary>HP CloudSystem</primary>
+<secondary>browser requirements</secondary></indexterm><indexterm
+id="v30766646" significance="normal"><primary>browser</primary>
+<secondary>requirements</secondary></indexterm>
+<para id="v30766647">The following browsers are supported for the
+CloudSystem installation.</para>
+<table frame="all" id="v30766648">
+<title>Supported browsers</title>
+<tgroup cols="2" colsep="1" id="v30766649" rowsep="1">
+<colspec colname="col2" colwidth="1.12*"/>
+<colspec colname="col3" colwidth="0.88*"/>
+<thead>
+<row rowsep="1" valign="bottom"><entry align="left" valign="bottom"
+>Browser</entry><entry align="left" valign="bottom">Version</entry>
+</row>
+</thead>
+<tbody>
+<row><entry><para>Microsoft Internet Explorer</para></entry><entry
+><para>10, 11</para></entry></row>
+<row><entry><para>Mozilla Firefox Extended Support Release (ESR)</para
+><para>Mozilla Firefox Personal Edition</para></entry><entry><para
+>35</para><para>36</para></entry></row>
+<row><entry><para>Google Chrome</para></entry><entry><para>40 or higher</para
+></entry></row>
+</tbody>
+</tgroup>
+</table>
+</section>
+<section id="s_lang-support-isc">
+<title>Language support in CloudSystem user interfaces</title>
+<indexterm id="v34303767" significance="normal"><primary>languages</primary>
+<secondary>supported in user interfaces</secondary></indexterm>
+<important>
+<para>Helion CloudSystem 9.0 Update 1 is a patch kit that is applied
+to an existing installation of Helion CloudSystem 9.0. </para>
+<para>You must install CloudSystem 9.0 virtual appliances in an English
+environment, including VMware vCenter and the server on which it is
+installed. </para>
+</important>
+<table frame="all" id="v34303888">
+<title>Supported languages</title>
+<tgroup cols="4" colsep="1" id="v34303889" rowsep="1">
+<colspec colname="col2" colwidth="1.05*"/>
+<colspec colname="COLSPEC3" colwidth="0.83*"/>
+<colspec colname="COLSPEC1" colwidth="0.83*"/>
+<colspec colname="COLSPEC0" colwidth="1.31*"/>
+<thead>
+<row rowsep="1" valign="bottom"><entry align="left" valign="bottom"
+>User interface</entry><entry align="left">9.0 Update 1</entry><entry
+align="left">9.0</entry><entry align="left">Notes</entry></row>
+</thead>
+<tbody>
+<row><entry><para>Management Appliance Installer</para></entry><entry
+><para>N/A</para></entry><entry><para>English</para></entry><entry
+></entry></row>
+<row><entry><para>First-Time Installer</para></entry><entry><para
+>N/A</para></entry><entry><para>English</para></entry><entry><para
+>When installing HP Helion CloudSystem 9.0, set your default browser
+language to English to avoid display errors in the Management Appliance
+Installer.</para></entry></row>
+<row><entry><para>Operations Console</para></entry><entry><para>English,
+Japanese, Simplified Chinese</para></entry><entry><para>English</para
+></entry><entry><para>For limitations on Japanese and Simplified Chinese
+language support, see the <citetitle>HP Helion CloudSystem 9.0 Update
+1 Release Notes</citetitle> at <ulink role="newbrowser"
+url="http://www.hp.com/go/CloudSystem/docs">Enterprise Information
+Library</ulink>.</para></entry></row>
+<row><entry><para>OpenStack user portal</para></entry><entry><para
+>English, Dutch (Netherlands), French, Japanese, Korean, Polish, Portuguese
+(Brazil), Russian, Spanish, Simplified Chinese, Traditional Chinese</para
+></entry><entry><para>English, Dutch (Netherlands), French, Japanese,
+Korean, Polish, Portuguese (Brazil), Russian, Spanish, Simplified
+Chinese, Traditional Chinese</para></entry><entry></entry></row>
+<row><entry><para>Cloud Service Automation Management Console (HP
+CSA)</para></entry><entry><para>English,  Japanese, Simplified Chinese</para
+></entry><entry><para>English, Japanese, Simplified  Chinese</para
+></entry><entry></entry></row>
+<row><entry><para>Marketplace Portal</para></entry><entry><para>English,
+Japanese, Simplified Chinese, Korean, German, Spanish, Danish, Dutch,
+Italian, Russian</para></entry><entry><para>English, Japanese, Simplified
+Chinese, Korean, German, Spanish, Danish, Dutch, Italian, Russian</para
+></entry><entry></entry></row>
+<row><entry><para>HP Operations Orchestration Central</para></entry>
+<entry><para>English, Japanese, Simplified Chinese</para></entry><entry
+><para>English, Japanese, Simplified Chinese</para></entry><entry
+></entry></row>
+<row><entry><para>VMware vCenter Server</para></entry><entry><para
+>English</para></entry><entry><para>English</para></entry><entry><para
+>Replace non-English characters with supported English characters
+in all vCenter object names. </para></entry></row>
+</tbody>
+</tgroup>
+</table>
+</section>
+</chapter>
+<chapter id="s_hardware-config-85-install">
+<title>Hardware requirements</title>
+<indexterm id="v30766596" significance="normal"><primary>HP CloudSystem</primary>
+<secondary>hardware requirements</secondary></indexterm><indexterm
+id="v30766598" significance="normal"><primary>management hypervisors</primary>
+<secondary>hardware requirements</secondary></indexterm><indexterm
+id="v30766599" significance="normal"><primary>management hypervisors</primary>
+<secondary>formula for storage requirements</secondary></indexterm>
+<indexterm id="v30766600" significance="normal"><primary>management
+hypervisors</primary><secondary>Glance repository sizing guidelines</secondary>
+</indexterm><indexterm id="v30766601" significance="normal"><primary
+>management hypervisors</primary><secondary>server requirements</secondary>
+</indexterm><indexterm id="v30766602" significance="normal"><primary
+>management hypervisors</primary><secondary>server and firmware compatibility</secondary>
+</indexterm><indexterm id="v30766603" significance="normal"><primary
+>compute nodes</primary><secondary>hardware requirements</secondary>
+</indexterm><indexterm id="v30766604" significance="normal"><primary
+>compute nodes</primary><secondary>server requirements</secondary>
+</indexterm><indexterm id="v30766605" significance="normal"><primary
+>compute nodes</primary><secondary>server and firmware compatibility</secondary>
+</indexterm><indexterm id="v30766606" significance="normal"><primary
+>HP ConvergedSystems</primary><secondary>supported versions</secondary>
+</indexterm>
+<para id="v30766597">Hardware requirements for management hypervisors,
+compute nodes, virtual appliances, SAN, storage and network equipment
+are provided in this chapter. </para>
+<section id="v30766607">
+<title>Management hypervisor hardware requirements</title>
+<para id="v30766608">The following table lists the minimum hardware
+requirements for an ESXi or KVM management hypervisor. </para>
+<important id="v30766610">
+<para>CloudSystem supports two management cluster configurations.</para>
+<itemizedlist>
+<listitem><para><emphasis role="bold">A management cluster with three
+hosts is strongly recommended</emphasis>. It offers high availability
+and performance benefits for robust production use. </para></listitem>
+<listitem><para>A management cluster with a single host is supported
+for small development, test, or production environments where physical
+high availability is not a requirement. HA can be achieved by adding
+hosts to result in a three host cluster.  Single host management clusters
+can support a maximum of 32 compute nodes and 1280 VM instances.</para>
+<para>A single host must be configured with the resources in the following
+tables to support a full CloudSystem deployment. CloudSystem is deployed
+as 13 virtual appliances in a VLAN configuration or 14 virtual appliances
+in a VxLAN configuration, all of which are installed on the single
+host.</para>
+<para>You can install CloudSystem on a single host and later decide
+to add hosts to the management cluster. See the “Manage the management
+hypervisor cluster” chapter of the <citetitle>HP Helion CloudSystem
+9.0 Update 1 Administrator Guide</citetitle> at <ulink role="newbrowser"
+url="http://www.hp.com/go/CloudSystem/docs">Enterprise Information
+Library</ulink>.</para>
+</listitem>
+</itemizedlist>
+</important>
+<para><xref linkend="t_mgmt-hyp-isc" role="select:label"/> contains
+the hardware requirements for the <emphasis role="bold">entire management
+hypervisor (physical host)</emphasis>, <emphasis role="italic">not</emphasis
+> for each node.</para>
+<table frame="all" id="t_mgmt-hyp-isc" valignall="top">
+<title>Management hypervisor host hardware requirements (minimum)</title>
+<tgroup cols="4" colsep="1" rowsep="1">
+<colspec colname="COLSPEC0" colwidth="1.05*"/>
+<colspec colname="col3" colwidth="1.02*"/>
+<colspec colname="col4" colwidth="1.08*"/>
+<colspec colname="COLSPEC5" colwidth="0.85*"/>
+<thead>
+<row rowsep="1" valign="bottom"><entry align="left">Configuration</entry>
+<entry align="left" valign="bottom">Cores per physical host</entry>
+<entry align="left" valign="bottom">RAM per physical host</entry><entry
+align="left">Storage </entry></row>
+</thead>
+<tbody>
+<row><entry><para>Three node management hypervisor (recommended)</para
+>*Three nodes are required to support failover between hosts.</entry>
+<entry><para>16 cores</para></entry><entry><para>192 GB</para></entry>
+<entry><para>Shared</para><para>See the <link
+linkend="s_storage-formula-isc"><emphasis role="bold">formula</emphasis
+></link> below.</para></entry></row>
+<row><entry><para>Single node management hypervisor</para></entry>
+<entry><para>16 cores</para></entry><entry><para>192 GB</para></entry>
+<entry><para>Shared or local</para><para>See the <link
+linkend="s_storage-formula-isc"><emphasis role="bold">formula</emphasis
+></link> below.</para></entry></row>
+</tbody>
+</tgroup>
+</table>
+<section id="v33284516">
+<title>Virtual appliance resource requirements</title>
+<table frame="all" id="v30766643">
+<title>Virtual appliance resource requirements (minimum)</title>
+<tgroup cols="5" colsep="1" id="v30766644" rowsep="1">
+<colspec colname="col1" colwidth="1.00*"/>
+<colspec colname="col2" colwidth="0.74*"/>
+<colspec colname="col3" colwidth="0.64*"/>
+<colspec colname="col4" colwidth="1.24*"/>
+<colspec colname="COLSPEC0" colwidth="1.42*"/>
+<thead>
+<row rowsep="1" valign="bottom"><entry align="left" valign="bottom"
+>Virtual appliance</entry><entry align="left" valign="bottom">Cores</entry>
+<entry align="left" valign="bottom">RAM</entry><entry align="left"
+valign="bottom">Boot Volume</entry><entry align="left">Data Volume</entry>
+</row>
+</thead>
+<tbody>
+<row><entry>Management appliance (ma1)</entry><entry><para>8 vCPUs</para
+></entry><entry><para>16 GB</para></entry><entry><para>200 GB (Thin
+Provisioned)</para></entry><entry><para>200 GB </para><para>Temporary
+storage required to support backup and restore operations</para></entry>
+</row>
+<row><entry>Management appliance (ma2)</entry><entry><para>8 vCPUs</para
+></entry><entry><para>8 GB</para></entry><entry><para>200 GB (Thin
+Provisioned)</para></entry><entry><para>200 GB </para><para>Temporary
+storage required to support backup and restore operations</para></entry>
+</row>
+<row><entry>Management appliance (ma3)</entry><entry><para>8 vCPUs</para
+></entry><entry><para>8 GB</para></entry><entry><para>200 GB (Thin
+Provisioned)</para></entry><entry><para>200 GB </para><para>Temporary
+storage required to support backup and restore operations</para></entry>
+</row>
+<row><entry>Cloud controller (cmc)</entry><entry><para>16 vCPUs</para
+></entry><entry><para>32 GB</para></entry><entry><para>200 GB (Thin
+Provisioned)</para></entry><entry><para>500 GB to 2 TB</para><para
+>Glance image repository size is specified in the First-Time Installer</para
+></entry></row>
+<row><entry>Cloud controller (cc1)</entry><entry><para>16 vCPUs</para
+></entry><entry><para>32 GB</para></entry><entry><para>200 GB (Thin
+Provisioned)</para></entry><entry></entry></row>
+<row><entry>Cloud controller (cc2)</entry><entry><para>16 vCPUs</para
+></entry><entry><para>32 GB</para></entry><entry><para>200 GB (Thin
+Provisioned)</para></entry><entry></entry></row>
+<row><entry><para>Enterprise appliance (ea1)</para></entry><entry
+><para>8 vCPUs</para></entry><entry><para>32 GB </para></entry><entry
+><para>2 TB (Thin Provisioned)</para><para>Required to support the
+Operations Orchestration database</para></entry><entry></entry></row>
+<row><entry><para>Enterprise appliance (ea2)</para></entry><entry
+><para>8 vCPUs</para></entry><entry><para>32 GB </para></entry><entry
+><para>2 TB (Thin Provisioned)</para><para>Required to support the
+Operations Orchestration database</para></entry><entry></entry></row>
+<row><entry><para>Enterprise appliance (ea3)</para></entry><entry
+><para>8 vCPUs</para></entry><entry><para>32 GB </para></entry><entry
+><para>2 TB (Thin Provisioned)</para><para>Required to support the
+Operations Orchestration database</para></entry><entry></entry></row>
+<row><entry><para>Monitoring appliance (mona1)</para></entry><entry
+><para>4 vCPUs</para></entry><entry><para>8 GB</para></entry><entry
+><para>200 GB (Thin Provisioned)</para></entry><entry></entry></row>
+<row><entry><para>Monitoring appliance (mona2)</para></entry><entry
+><para>4 vCPUs</para></entry><entry><para>8 GB</para></entry><entry
+><para>200 GB (Thin Provisioned)</para></entry><entry></entry></row>
+<row><entry><para>Monitoring appliance (mona3)</para></entry><entry
+><para>4 vCPUs</para></entry><entry><para>8 GB</para></entry><entry
+><para>200 GB (Thin Provisioned)</para></entry><entry></entry></row>
+<row><entry><para>Update appliance (ua1)</para></entry><entry><para
+>2 vCPUs</para></entry><entry><para>8 GB</para></entry><entry><para
+>200 GB (Thin Provisioned)</para></entry><entry></entry></row>
+<row><entry><para>SDN controller (sdn)</para><para><superscript>*Deployed
+only in VxLAN configurations.</superscript></para></entry><entry><para
+>4 vCPUs</para></entry><entry><para>8 GB</para></entry><entry><para
+>200 GB (Thin Provisioned)</para></entry><entry></entry></row>
+<row><entry><emphasis role="bold">Total HA configuration</emphasis
+></entry><entry><emphasis role="bold">114 vCPUs</emphasis></entry>
+<entry><emphasis role="bold">264 GB</emphasis></entry><entry><emphasis
+role="bold">8.2 TB</emphasis></entry><entry><para><emphasis role="bold"
+>1.1 TB to 2 TB</emphasis></para></entry></row>
+</tbody>
+</tgroup>
+</table>
+</section>
+<section id="s_storage-formula-isc">
+<title>Storage requirements for the management hypervisor</title>
+<para>You must configure <emphasis role="bold">shared storage</emphasis
+> for a three node management hypervisor. </para>
+<para>You can configure shared storage or local storage for a single
+node management hypervisor. Configure local storage only if you do
+not plan to add hosts later.</para>
+<bridgehead id="v30766615">Formula to determine the shared or local
+management hypervisor storage requirements</bridgehead>
+<para><emphasis role="italic">Virtual appliance storage</emphasis
+> <emphasis role="bold">+</emphasis> <emphasis role="italic">Glance
+images</emphasis> <emphasis role="italic"><emphasis role="bold">=</emphasis
+> Management hypervisor storage</emphasis></para>
+<itemizedlist spacing="compact">
+<listitem><para>Virtual appliance storage: <emphasis role="bold">8
+TB</emphasis></para></listitem>
+<listitem><para>Glance images and snapshots: <emphasis role="bold"
+>500 GB to 10.1 TB</emphasis></para><para>Use the guidelines in the
+following table to estimate the storage requirements for the Glance
+disk.</para>
+</listitem>
+</itemizedlist>
+<note>
+<para>Glance images are stored on a local disk in the management hypervisor.
+External storage for Glance images is not supported.</para>
+<para>You set the size of the Glance disk in the First-Time Installer,
+and you can increase the size of the disk after installation. See <quote
+>Expanding the Glance disk size</quote> in the <citetitle>HP Helion
+CloudSystem 9.0 Update 1 Administrator Guide</citetitle> at <ulink
+role="newbrowser" url="http://www.hp.com/go/CloudSystem/docs">Enterprise
+Information Library</ulink>.</para>
+</note>
+<table frame="all">
+<title>Glance repository sizing guidelines</title>
+<tgroup cols="5" colsep="1" rowsep="1">
+<colspec colname="col1"/>
+<colspec colname="col2"/>
+<colspec colname="col3"/>
+<colspec colname="col4"/>
+<colspec colname="COLSPEC0"/>
+<thead>
+<row rowsep="1" valign="bottom"><entry align="left" valign="bottom"
+>Glance repository</entry><entry align="left" valign="bottom">Linux
+images (4 GB each)</entry><entry align="left" valign="bottom">Windows
+images (16 GB each)</entry><entry align="left" valign="bottom">Snapshots
+(20 GB each)</entry><entry align="left">TOTAL </entry></row>
+</thead>
+<tbody>
+<row><entry>Small</entry><entry>15</entry><entry>10</entry><entry
+>15</entry><entry>500 GB</entry></row>
+<row><entry>Medium </entry><entry>20</entry><entry>15</entry><entry
+>40</entry><entry>1.2 TB</entry></row>
+<row><entry>Large </entry><entry>25</entry><entry>30</entry><entry
+>500</entry><entry>10.1 TB</entry></row>
+</tbody>
+</tgroup>
+</table>
+</section>
+<section id="v33284526">
+<title>Supported servers for management hypervisors </title>
+<para id="v33284527"><emphasis role="bold">HP servers that support
+the ESXi and KVM operating systems listed in <xref
+linkend="s_software-configure-85-install" role="select:title page"
+/> are supported as management hypervisors in CloudSystem.</emphasis
+></para>
+<orderedlist continuation="restarts" id="v33284529" inheritnum="ignore">
+<title>Find supported servers</title>
+<para id="v33284530">Find the supported servers on which you can install
+the ESXi or KVM operating system for your management hypervisor.</para>
+<listitem id="v33284531"><para id="v33284532">Navigate to <ulink
+role="newbrowser"
+url="http://www8.hp.com/us/en/products/servers/management/operating-environments/os-support-matrix.html"
+>Server operating systems &amp; virtualization</ulink>.</para>
+</listitem>
+<listitem id="v33284533"><para id="v33284534">Select the operating
+system (<emphasis role="bold">Red Hat</emphasis> or <emphasis
+role="bold">VMware</emphasis>) you plan to use as your management
+hypervisor.</para></listitem>
+<listitem id="v33284535"><para id="v33284536">Select the <emphasis
+role="bold">Software version</emphasis> of the operating system.</para>
+</listitem>
+<listitem id="v33284537"><para id="v33284538">Scroll down to the table
+and verify that the server you plan to use is a supported server.</para>
+</listitem>
+</orderedlist>
+<orderedlist continuation="restarts" id="v33284539" inheritnum="ignore">
+<title>(Optional) Verify firmware compatibility</title>
+<listitem id="v33284540"><para id="v33284541">Navigate to the HP Support
+Center at <ulink role="newbrowser" url="http://www.hp.com/go/hpsc"
+>http://www.hp.com/go/hpsc</ulink>.</para></listitem>
+<listitem id="v33284542"><para id="v33284543">Enter the supported
+server name in the product search box and click <guilabel
+moreinfo="none">Go</guilabel>.</para></listitem>
+<listitem id="v33284544"><para id="v33284545">Click <guilabel
+moreinfo="none">Get drivers, software &amp; firmware</guilabel>.</para>
+</listitem>
+<listitem id="v33284546"><para id="v33284547">Find the server link
+in the list and click the link.</para></listitem>
+<listitem id="v33284548"><para id="v33284549">Click the name of the
+operating system you plan to use.</para></listitem>
+<listitem id="v33284550"><para id="v33284551">Click <guilabel
+moreinfo="none">firmware</guilabel>.</para></listitem>
+<listitem id="v33284552"><para id="v33284553">Verify the versions
+that support the server you plan to use.</para><para id="v33284554"
+>If your firmware version is out of date, download the latest version.</para>
+</listitem>
+</orderedlist>
+</section>
+</section>
+<section id="v30766620">
+<title>Compute node hardware requirements</title>
+<para id="v30766623">Compute node sizes vary according to your resource
+needs. Answer the following questions to help you determine the number
+of CPU cores and amount of memory and storage to allocate to each
+compute node. </para>
+<itemizedlist id="v33284557" spacing="compact">
+<listitem id="v33284558"><para id="v33284559">What flavor settings
+will the provisioned instances use? </para></listitem>
+<listitem id="v33284560"><para id="v33284561">What oversubscription
+rate is supported for each compute resource? See the <quote role="bold"
+>Compute node creation</quote> chapter in the <citetitle>HP Helion
+CloudSystem 9.0 Update 1 Administrator Guide</citetitle> in the <ulink
+role="newbrowser" url="http://www.hp.com/go/CloudSystem/docs">Enterprise
+Information Library</ulink>.</para></listitem>
+<listitem id="v33284562"><para id="v33284563">How many instances will
+each compute node host? </para></listitem>
+</itemizedlist>
+<bridgehead>Storage requirements for compute hypervisors</bridgehead>
+<para>Refer to the hypervisor vendor (VMware ESXi, Microsoft Hyper-V,
+or Red Hat Enterprise Linux KVM) documentation for minimum storage
+requirements to run the system in production.</para>
+<para>If you are using the hypervisor as a compute node, additional
+storage is required, which depends on:<itemizedlist>
+<listitem><para>Flavor of image</para></listitem>
+<listitem><para>Number of guest instances (running or stopped state)</para>
+</listitem>
+</itemizedlist></para>
+<bridgehead>Formula to determine compute hypervisor storage requirements</bridgehead>
+<para><emphasis role="italic">Maximum ephemeral disk size, calculated
+from the largest image flavor</emphasis> </para>
+<para><emphasis role="bold">x</emphasis> <emphasis role="italic">Number
+of active or stopped instances at any given time</emphasis></para>
+<para><emphasis role="italic"><emphasis role="bold">=</emphasis> Additional
+required storage on compute hypervisor</emphasis></para>
+<table frame="all" id="v33284521">
+<title>Support appliance resource requirements (minimum)</title>
+<tgroup cols="4" colsep="1" id="v33284522" rowsep="1">
+<colspec colname="col1"/>
+<colspec colname="col2"/>
+<colspec colname="col3"/>
+<colspec colname="col4"/>
+<thead>
+<row rowsep="1" valign="bottom"><entry align="left" valign="bottom"
+>Virtual appliance</entry><entry align="left" valign="bottom">Cores</entry>
+<entry align="left" valign="bottom">RAM</entry><entry align="left"
+valign="bottom">Storage</entry></row>
+</thead>
+<tbody>
+<row><entry><para>OVSvApp VM</para><para>*<emphasis role="italic"
+>One VM is required to support each ESXi compute host. </emphasis
+></para></entry><entry><para>4 vCPUs</para></entry><entry><para>4
+GB</para></entry><entry><para>40 GB</para></entry></row>
+</tbody>
+</tgroup>
+</table>
+<section id="v33284564">
+<title>Supported HP servers for compute nodes</title>
+<para id="v33284565"><emphasis role="bold">HP servers that support
+the ESXi, KVM, and Hyper-V operating systems listed in <xref
+linkend="s_software-configure-85-install" role="select:title page"
+/> are supported as compute nodes in CloudSystem.</emphasis></para>
+<orderedlist continuation="restarts" id="v33284567" inheritnum="ignore">
+<title>Find supported servers</title>
+<para id="v33284568">Find the supported servers on which you can install
+the ESXi, KVM, or Hyper-V operating system.</para>
+<listitem id="v33284569"><para id="v33284570">Navigate to <ulink
+role="newbrowser"
+url="http://www8.hp.com/us/en/products/servers/management/operating-environments/os-support-matrix.html"
+>Server operating systems &amp; virtualization</ulink>.</para>
+</listitem>
+<listitem id="v33284571"><para id="v33284572">Select the operating
+system (<emphasis role="bold">VMware</emphasis>, <emphasis role="bold"
+>Red Hat</emphasis>, or <emphasis role="bold">Microsoft Windows</emphasis
+>) you plan to install on your compute node.</para></listitem>
+<listitem id="v33284573"><para id="v33284574">Select the <emphasis
+role="bold">Software version</emphasis> of the operating system.</para>
+</listitem>
+<listitem id="v33284575"><para id="v33284576">Scroll down to the table
+and verify that the server you plan to use is a supported server.</para>
+</listitem>
+</orderedlist>
+<orderedlist continuation="restarts" id="v33284577" inheritnum="ignore">
+<title>(Optional) Verify firmware compatibility</title>
+<listitem id="v33284578"><para id="v33284579">Navigate to the HP Support
+Center at <ulink role="newbrowser" url="http://www.hp.com/go/hpsc"
+>http://www.hp.com/go/hpsc</ulink>.</para></listitem>
+<listitem id="v33284580"><para id="v33284581">Enter the supported
+server name in the product search box and click <guilabel
+moreinfo="none">Go</guilabel>.</para></listitem>
+<listitem id="v33284582"><para id="v33284583">Click <guilabel
+moreinfo="none">Get drivers, software &amp; firmware</guilabel>.</para>
+</listitem>
+<listitem id="v33284584"><para id="v33284585">Find the server link
+in the list and click the link.</para></listitem>
+<listitem id="v33284586"><para id="v33284587">Click the name of the
+operating system you plan to use.</para></listitem>
+<listitem id="v33284588"><para id="v33284589">Click <guilabel
+moreinfo="none">firmware</guilabel>.</para></listitem>
+<listitem id="v33284590"><para id="v33284591">Verify the versions
+that support the server you plan to use.</para><para id="v33284592"
+>If your firmware version is out of date, download the latest version.</para>
+</listitem>
+</orderedlist>
+</section>
+<section>
+<title>Supported servers from third party vendors for compute nodes</title>
+<para>In general, any server listed in the VMware, Microsoft Hyper-V,
+and Red Hat Enterprise Linux hypervisor compatibility guides is supported
+as a compute node in CloudSystem, with the following limitation.<itemizedlist>
+<listitem><para>VM guests cannot be moved from one third-party vendor’s
+server to another.</para></listitem>
+</itemizedlist></para>
+<para>See the following web sites for compatibility information.</para>
+<itemizedlist>
+<listitem><para>VMware compatibility: Use the search function at <ulink
+role="newbrowser"
+url="http://www.vmware.com/resources/compatibility/search.php">VMware
+Compatibility Guide</ulink></para></listitem>
+<listitem><para>Microsoft Hyper-V compatibility: Search for Hyper-V
+from the <ulink role="newbrowser"
+url="http://www.windowsservercatalog.com">Windows Server Catalog</ulink
+></para></listitem>
+<listitem><para>Red Hat Enterprise Linux compatibility: Use the search
+function at <ulink role="newbrowser"
+url="https://access.redhat.com/ecosystem/search/#/ecosystem/Red%20Hat%20Enterprise%20Linux?category=Server"
+>Red Hat Enterprise Linux ecosystem</ulink></para></listitem>
+</itemizedlist>
+</section>
+</section>
+<section id="v30766629">
+<title>HP ConvergedSystems support</title>
+<para id="v30766630">CloudSystem supports the following converged
+systems:<itemizedlist>
+<listitem><para>HP ConvergedSystem 700x for Cloud</para></listitem>
+<listitem><para>HP ConvergedSystems 700 for VMware</para></listitem>
+</itemizedlist></para>
+</section>
+<section id="v32703502">
+<title>Network equipment</title>
+<para id="v32703503"><itemizedlist>
+<listitem><para>(Optional) VxLAN-based Provider network in a CVR deployment
+requires the HP FlexFabrix 5930 physical switch.</para><para>For more
+information, see the <citetitle>HP Helion CloudSystem 9.0 Update 1
+Network Planning Guide</citetitle> in the <phrase><ulink
+role="newbrowser" url="http://www.hp.com/go/CloudSystem/docs">Enterprise
+Information Library</ulink>.</phrase></para>
+</listitem>
+</itemizedlist></para>
+</section>
+<section id="s_storage-support-85-install">
+<title>Storage requirements</title>
+<indexterm id="v30766632" significance="normal"><primary>storage</primary>
+<secondary>requirements</secondary></indexterm><indexterm id="v30766633"
+significance="normal"><primary>storage</primary><secondary>instance
+(ephemeral)</secondary></indexterm><indexterm id="v30766634"
+significance="normal"><primary>storage</primary><secondary>block (Cinder)
+storage</secondary></indexterm><indexterm significance="normal">
+<primary>storage</primary><secondary>object (Swift) storage</secondary>
+</indexterm><indexterm significance="normal"><primary>storage</primary>
+<secondary>image (Glance) storage</secondary></indexterm>
+<note id="v30766638">
+<para id="v30766639">The REST API interface must be enabled on the
+HP 3PAR storage system if you want to provision block storage from
+an HP 3PAR storage system.</para>
+</note>
+<table frame="all" id="t_instance-glance-isc">
+<title>Instance (ephemeral) storage requirements</title>
+<tgroup cols="3" colsep="1" id="v32703505" rowsep="1">
+<colspec colname="col1" colwidth="0.53*"/>
+<colspec colname="col2" colwidth="0.89*"/>
+<colspec colname="col3" colwidth="1.59*"/>
+<thead>
+<row rowsep="1" valign="bottom"><entry align="left" valign="bottom"
+>Compute node type</entry><entry align="left" valign="bottom">Storage
+type</entry><entry align="left" valign="bottom">Supported version</entry>
+</row>
+</thead>
+<tbody>
+<row><entry>ESXi</entry><entry>Virtual Machine File System (VMFS block
+storage)</entry><entry><para>CloudSystem supports all ESXi datastore
+storage supported by VMware.</para><para>See VMware support documentation
+in <xref linkend="s_3rd-party-doc-isc" role="select:title page"/>.</para
+></entry></row>
+<row><entry>KVM</entry><entry>Local Linux File System</entry><entry
+><para>CloudSystem supports all KVM backing storage configurations
+supported by Red Hat.</para><para>See RHEL support documentation in <xref
+linkend="s_3rd-party-doc-isc" role="select:title page"/>.</para></entry>
+</row>
+<row><entry>Hyper-V</entry><entry>Local Windows System or CFS</entry>
+<entry><para>CloudSystem supports all Hyper-V backing storage configurations
+supported by Microsoft.</para><para>See Microsoft support documentation
+in <xref linkend="s_3rd-party-doc-isc" role="select:title page"/>.</para
+></entry></row>
+</tbody>
+</tgroup>
+</table>
+<table frame="all" id="v30766635">
+<title>Block (Cinder) storage requirements</title>
+<tgroup cols="3" colsep="1" id="v30766636" rowsep="1">
+<colspec colname="COLSPEC3" colwidth="0.53*"/>
+<colspec colname="col1" colwidth="0.89*"/>
+<colspec colname="COLSPEC0" colwidth="1.58*"/>
+<thead>
+<row rowsep="1" valign="bottom"><entry align="left">Compute node type</entry>
+<entry align="left" valign="bottom">Storage type</entry><entry
+align="left">Supported versions</entry></row>
+</thead>
+<tbody>
+<row><entry>ESXi</entry><entry><emphasis role="bold">Virtual Machine
+File System (VMFS block storage)</emphasis><superscript>*</superscript
+><para><superscript>* Can be iSCSI or FC based.</superscript></para
+></entry><entry><para>CloudSystem supports all ESXi datastore storage
+supported by VMware.</para><para>See <xref linkend="s_3rd-party-doc-isc"
+role="select:title page"/></para></entry></row>
+<row><entry morerows="2">KVM</entry><entry morerows="2"><para><emphasis
+role="bold">HP 3PAR Fibre Channel (FC) Driver </emphasis></para><para
+><emphasis role="bold">HP 3PAR iSCSI Driver</emphasis></para><para
+><emphasis role="bold">HP StoreVirtual VSA</emphasis> (iSCSI protocol)</para
+></entry><entry morerows="2"><para><emphasis role="bold">HP 3PAR Fibre
+Channel and iSCSI Drivers</emphasis><itemizedlist>
+<listitem><para><emphasis role="bold">Inform OS 3.2.2 </emphasis></para>
+<itemizedlist spacing="compact">
+<listitem><para>3PAR Service Processor 4.4.0</para></listitem>
+<listitem><para>3PAR Inform Management Console 4.70</para></listitem>
+<listitem><para>StoreServ Management Console 2.1</para></listitem>
+<listitem><para>Smart Start 1.5</para></listitem>
+</itemizedlist>
+</listitem>
+<listitem><para><emphasis role="bold">Inform OS 3.2.1 (MU3)</emphasis
+></para>
+<itemizedlist spacing="compact">
+<listitem><para>3PAR Service Processor 4.3 GA-24 (MU1)</para></listitem>
+<listitem><para>3PAR Inform Management Console 4.6.2</para></listitem>
+<listitem><para>CLI-SNMP (for clients) 3.2.1 (MU3)</para></listitem>
+<listitem><para>StoreServ Management Console 2.0.1</para></listitem>
+<listitem><para>Smart Start 1.4.2</para></listitem>
+<listitem><para>RC Quorum Witness 2.0.001</para></listitem>
+</itemizedlist>
+</listitem>
+</itemizedlist></para><para><emphasis role="bold">HP StoreVirtual
+VSA 4000 series</emphasis></para><itemizedlist spacing="compact">
+<listitem><para>Driver 11.5.01.0079.0 (Helion Embedded)</para>
+</listitem>
+<listitem><para>SW solution on the management hypervisor: LHN P4000</para>
+</listitem>
+<listitem><para>HW solution: 4000 hard drive array</para></listitem>
+</itemizedlist></entry></row>
+<row><entry></entry></row>
+<row><entry></entry></row>
+<row><entry morerows="1">Hyper-V</entry><entry morerows="1"><para
+><emphasis role="bold">HP 3PAR iSCSI Driver</emphasis></para><para
+><emphasis role="bold">HP StoreVirtual VSA</emphasis> (iSCSI protocol)</para
+></entry><entry morerows="1"><para><emphasis role="bold">HP 3PAR iSCSI
+Driver</emphasis><itemizedlist>
+<listitem><para><emphasis role="bold">Inform OS 3.2.2</emphasis></para>
+<itemizedlist spacing="compact">
+<listitem><para>3PAR Service Processor 4.4.0</para></listitem>
+<listitem><para>3PAR Inform Management Console 4.70</para></listitem>
+<listitem><para>StoreServ Management Console 2.1</para></listitem>
+<listitem><para>Smart Start 1.5</para></listitem>
+</itemizedlist>
+</listitem>
+<listitem><para><emphasis role="bold">Inform OS 3.2.1 (MU3)</emphasis
+></para>
+<itemizedlist spacing="compact">
+<listitem><para>3PAR Service Processor 4.3 GA-24 (MU1)</para></listitem>
+<listitem><para>3PAR Inform Management Console 4.6.2</para></listitem>
+<listitem><para>CLI-SNMP (for clients) 3.2.1 (MU3)</para></listitem>
+<listitem><para>StoreServ Management Console 2.0.1</para></listitem>
+<listitem><para>Smart Start 1.4.2</para></listitem>
+<listitem><para>RC Quorum Witness 2.0.001</para></listitem>
+</itemizedlist>
+</listitem>
+</itemizedlist></para><para><emphasis role="bold">HP StoreVirtual
+VSA</emphasis></para><itemizedlist spacing="compact">
+<listitem><para>SW solution on the management hypervisor is LHN P4000</para>
+</listitem>
+<listitem><para>HW solution is the 4000 hard drive array</para>
+</listitem>
+</itemizedlist></entry></row>
+<row><entry></entry></row>
+</tbody>
+</tgroup>
+</table>
+<table frame="all" id="v30918830">
+<title>Object (Swift) storage requirements</title>
+<tgroup cols="3" colsep="1" id="v30918831" rowsep="1">
+<colspec colname="col1" colwidth="0.86*"/>
+<colspec colname="COLSPEC0" colwidth="0.57*"/>
+<colspec colname="COLSPEC1" colwidth="1.59*"/>
+<thead>
+<row rowsep="1" valign="bottom"><entry align="left" valign="bottom"
+>Storage types</entry><entry align="left">Object storage component</entry>
+<entry align="left">Tested configuration</entry></row>
+</thead>
+<tbody>
+<row><entry morerows="3">OpenStack Swift <para>See <xref
+linkend="c_cs-scale-limits-85-iscg" role="select:title page"/>.</para
+><note>
+<para>OpenStack Swift was performance tested with HP ProLiant DL380
+Gen9 servers as the Proxy Nodes and HP ProLiant SL4540 Gen8 servers
+as the Object Storage Nodes. </para>
+<para>Other HP servers including HP Apollo 4530 and non-HP servers
+are also supported. </para>
+<para>See <ulink
+url="http://helionready.hpcloud.com/ihv/category/Server?page=1">HP
+Helion Ready Solution Catalog</ulink> for tested and certified HP
+and non-HP servers.</para>
+<para>When choosing servers for Swift, keep the following compute
+requirements in mind:<itemizedlist>
+<listitem><para>Proxy Nodes need more CPU and RAM and very few storage
+disks.</para></listitem>
+<listitem><para>Object Storage Nodes are more sensitive to RAM (RAM
+requirements increase when storage increases), and are expected to
+host a large number of disks because data is primarily stored on these
+nodes.</para></listitem>
+</itemizedlist></para>
+</note></entry><entry>Two Swift Proxy Nodes (one per zone) minimum</entry>
+<entry><itemizedlist>
+<listitem><para>HP ProLiant DL380 Gen9 server</para></listitem>
+<listitem><para>2 Processors, 10-12 cores each</para></listitem>
+<listitem><para>2 Large Form Factor (LFF) SAS/SATA for the operating
+system</para></listitem>
+<listitem><para>2 LFF SSD for account/container rings</para></listitem>
+<listitem><para>Minimum RAM = 96 GB</para>
+<itemizedlist spacing="compact">
+<listitem><para>96 GB low concurrent use</para></listitem>
+<listitem><para>128 GB moderate concurrent use</para></listitem>
+<listitem><para>192 GB high concurrent use</para></listitem>
+</itemizedlist>
+</listitem>
+</itemizedlist></entry></row>
+<row><entry>Two Swift Object Storage Nodes (one per zone) minimum</entry>
+<entry><itemizedlist>
+<listitem><para>Servers</para>
+<itemizedlist spacing="compact">
+<listitem><para>SL4550 Gen8 1x60</para></listitem>
+<listitem><para>SL4540 Gen8 2x25</para><para>See the SL4540 <ulink
+url="http://www8.hp.com/h20195/v2/GetPDF.aspx/c04128155.pdf">QuickSpecs</ulink
+></para>
+</listitem>
+</itemizedlist>
+</listitem>
+<listitem><para>OS disks and Swift data disks</para>
+<itemizedlist spacing="compact">
+<listitem><para>2 Single Form Factor (SFF) drives for the operating
+system (1–1.6 TB each)</para></listitem>
+<listitem><para>Minimum 2 Large Form Factor (LFF) drives for the object
+ring (6 TB each)</para></listitem>
+</itemizedlist>
+</listitem>
+<listitem><para>Minimum RAM = 1 GB per TB of storage</para><para><emphasis
+role="bold">Example</emphasis>: 192 GB RAM for 60 3 TB disks, 128
+GB RAM for 40 3 TB disks</para>
+</listitem>
+</itemizedlist></entry></row>
+<row><entry><para>Object Proxy Network</para><para>(Configured during
+First-Time Installation)</para></entry><entry>10 Gigabits per second
+data transfer speed (minimum)</entry></row>
+<row><entry><para>Object Storage Network</para><para>(Configured during
+object storage configuration)</para></entry><entry>10 Gigabits per
+second data transfer speed (minimum)</entry></row>
+</tbody>
+</tgroup>
+</table>
+</section>
+</chapter>
+<chapter id="c_cs-scale-limits-85-iscg">
+<title>CloudSystem scale limitations</title>
+<para id="v32703509">Scaling limitations for cloud resources, networking,
+and storage are provided in the following tables.</para>
+<table frame="all" id="v32703512">
+<title>CloudSystem Foundation scaling limits</title>
+<tgroup cols="2" colsep="1" id="v32703513" rowsep="1">
+<colspec colname="col1" colwidth="1.29*"/>
+<colspec colname="col2" colwidth="1.04*"/>
+<thead>
+<row rowsep="1" valign="bottom"><entry align="left" valign="bottom"
+>Configured resource</entry><entry align="left" valign="bottom">Maximum
+number supported</entry></row>
+</thead>
+<tbody>
+<row><entry>Managed virtual machine instances</entry><entry><para
+>10,000 (ESXi only, KVM only, or mixed ESXi and KVM)</para><para>10,000
+(ESXi and/or KVM with Hyper-V; of the 10,000, Hyper-V cannot exceed
+1000)</para><para>1000 (Hyper-V only)</para></entry></row>
+<row><entry>Managed compute nodes</entry><entry><para>200 (ESXi only,
+KVM only, or mixed ESXi and KVM)</para><para>200 (ESXi and/or KVM
+with Hyper-V; of the 200, Hyper-V cannot exceed 40)</para><para>40
+(Hyper-V only)</para></entry></row>
+<row><entry><para>OpenStack user portal users </para></entry><entry
+><para>256 (Total number of users logged in at one time)</para><para
+>500 (Total number of users)</para></entry></row>
+<row><entry>OpenStack user portal users simultaneously creating virtual
+machine instances</entry><entry><para>25</para><para>(Total number
+of concurrent connections)</para></entry></row>
+<row><entry>Projects</entry><entry>512</entry></row>
+<row><entry>Virtual machine instances per project</entry><entry>500</entry>
+</row>
+<row><entry>Images</entry><entry>512</entry></row>
+<row><entry>Flavors</entry><entry>256</entry></row>
+<row><entry>External networks</entry><entry>1</entry></row>
+<row><entry>Private IP addresses</entry><entry>10,000</entry></row>
+<row><entry>Floating IP addresses</entry><entry>10,000</entry></row>
+<row><entry>Tenant VLAN networks</entry><entry>600</entry></row>
+<row><entry>Tenant VxLAN networks</entry><entry>750</entry></row>
+<row><entry>Security Group rules</entry><entry>1,000</entry></row>
+<row><entry>Virtual machine instances in a single security group</entry>
+<entry>100</entry></row>
+<row><entry>Block storage volumes (created)</entry><entry>10,000</entry>
+</row>
+<row><entry>Block storage volumes (attached)</entry><entry><para><itemizedlist>
+<listitem><para>5,000 VMFS volumes attached to ESXi compute hosts</para>
+</listitem>
+<listitem><para>5,000 3PAR volumes attached to KVM compute hosts</para>
+</listitem>
+<listitem><para>1,000 3PAR volumes attached to Hyper-V compute hosts</para>
+</listitem>
+<listitem><para>5,000 VSA volumes attached to KVM and Hyper-V compute
+hosts</para></listitem>
+<listitem><para>1,000 VSA volumes attached to Hyper-V compute hosts</para>
+</listitem>
+</itemizedlist></para></entry></row>
+<row><entry>Clusters per vCenter Server</entry><entry>16</entry></row>
+</tbody>
+</tgroup>
+</table>
+<table frame="all" id="v32703520">
+<title>CloudSystem Enterprise scaling limits</title>
+<tgroup cols="2" colsep="1" id="v32703521" rowsep="1">
+<colspec colname="col1" colwidth="1.11*"/>
+<colspec colname="col2" colwidth="0.89*"/>
+<thead>
+<row rowsep="1" valign="bottom"><entry align="left" valign="bottom"
+>Configured resource</entry><entry align="left" valign="bottom">Maximum
+number supported</entry></row>
+</thead>
+<tbody>
+<row><entry>Number of simultaneous HP CSA Marketplace Portal users</entry>
+<entry>10</entry></row>
+<row><entry>Number of concurrent subscription (service) requests</entry>
+<entry>10</entry></row>
+<row><entry>Total number of subscriptions (services)</entry><entry
+>5000</entry></row>
+<row><entry>Number of HP Helion CloudSystem clouds with 1 CloudSystem
+Enterprise</entry><entry>4</entry></row>
+</tbody>
+</tgroup>
+</table>
+<table frame="all" id="v32703516">
+<title>Object storage (Swift) scaling limits</title>
+<tgroup cols="3" colsep="1" id="v32703517" rowsep="1">
+<colspec colname="col1" colwidth="1.00*"/>
+<colspec colname="col2" colwidth="0.82*"/>
+<colspec colname="col3" colwidth="1.18*"/>
+<tbody>
+<row><entry align="center" nameend="col3" namest="col1"><emphasis
+role="bold">Swift as a Service</emphasis></entry></row>
+<row><entry align="left" valign="bottom"><emphasis role="bold">Parameter</emphasis
+></entry><entry align="left" valign="bottom"><emphasis role="bold"
+>Limitation</emphasis></entry><entry align="left" valign="bottom"
+><emphasis role="bold">Additional information</emphasis></entry></row>
+<row><entry>Number of objects</entry><entry>512,000,000</entry><entry
+></entry></row>
+<row><entry>Amount of storage</entry><entry>512 TB</entry><entry>This
+is based on the assumption that the average image size is 4 GB.</entry>
+</row>
+<row><entry>Concurrency</entry><entry>512</entry><entry>This is the
+number of parallel users accessing Swift while deploying VMs.</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+<note id="v32703518">
+<para id="v32703519">All Swift scaling limits are based on a configuration
+that includes a Load Balancer.</para>
+</note>
+<table frame="all" id="v33876424">
+<title>HP Helion Development Platform scaling limitations</title>
+<tgroup cols="2" colsep="1" id="v33876425" rowsep="1">
+<colspec colname="col1" colwidth="1.28*"/>
+<colspec colname="col2" colwidth="0.71*"/>
+<thead>
+<row rowsep="1" valign="bottom"><entry align="left" valign="bottom"
+>Configured resource</entry><entry align="left" valign="bottom">Maximum
+number supported</entry></row>
+</thead>
+<tbody>
+<row><entry><para>Application Lifecycle Service (ALS) – Maximum number
+of virtual machine instances</para></entry><entry>100</entry></row>
+<row><entry><para>Database as a Service (DBaaS) – Maximum number of
+virtual machine instances within a single project</para><para>Includes
+15 virtual machine instances for control plane components and 485
+available virtual machine instances for client databases</para></entry>
+<entry>500</entry></row>
+</tbody>
+</tgroup>
+</table>
+<table frame="all" id="v33876426">
+<title>L2 gateway scaling limitations</title>
+<tgroup cols="2" colsep="1" id="v33876427" rowsep="1">
+<colspec colname="col1" colwidth="1.28*"/>
+<colspec colname="col2" colwidth="0.71*"/>
+<thead>
+<row rowsep="1" valign="bottom"><entry align="left" valign="bottom"
+>Configured resource</entry><entry align="left" valign="bottom">Maximum
+number supported</entry></row>
+</thead>
+<tbody>
+<row><entry>L2 gateway connections</entry><entry>300</entry></row>
+</tbody>
+</tgroup>
+</table>
+</chapter>
+<chapter id="v33876472">
+<title>Support and other resources</title>
+<indexterm id="v26942284" significance="normal"><primary>contacting
+HP</primary><secondary>information to collect</secondary></indexterm>
+<section id="s_resource-information-to-collect-isc">
+<title>Information to collect before contacting HP</title>
+<para id="v33876475">Be sure to have the following information available
+before you contact HP:</para>
+<itemizedlist id="v33876476">
+<listitem id="v33876477"><para id="v33876478">Software product name</para>
+</listitem>
+<listitem id="v33876479"><para id="v33876480">Hardware product model
+number</para></listitem>
+<listitem id="v33876481"><para id="v33876482">Operating system type
+and version</para></listitem>
+<listitem id="v33876483"><para id="v33876484">Applicable error message</para>
+</listitem>
+<listitem id="v33876485"><para id="v33876486">Third-party hardware
+or software</para></listitem>
+<listitem id="v33876487"><para id="v33876488">Technical support registration
+number (if applicable)</para></listitem>
+</itemizedlist>
+</section>
+<section id="s_resource-how-to-contact-HP-isc">
+<title>How to contact HP</title>
+<para id="v21107051"><indexterm significance="normal"><primary>HP</primary>
+<secondary>contacting</secondary></indexterm>Use the following methods
+to contact HP:</para>
+<itemizedlist id="v33876491">
+<listitem id="v33876492"><para id="v33876493">To obtain HP contact
+information for any country, see the Contact HP worldwide website:</para>
+<para id="v33876494"><ulink url="http://www.hp.com/go/assistance"
+>http://www.hp.com/go/assistance</ulink></para>
+</listitem>
+<listitem id="v33876495"><para id="v33876496">Use the <emphasis
+role="bold">Get help from HP</emphasis> link on the HP Support Center:</para>
+<para id="v33876497"><ulink url="http://www.hp.com/go/hpsc">http://www.hp.com/go/hpsc</ulink
+></para>
+</listitem>
+<listitem id="v33876498"><para id="v33876499">To contact HP by telephone
+in the United States, use the Contact HP – Phone Assist website to
+determine the telephone number that precisely fits your needs. For
+continuous quality improvement, conversations might be recorded or
+monitored.</para><para id="v33876500"><ulink
+url="http://www8.hp.com/us/en/contact-hp/phone-assist.html#section1"
+>http://www8.hp.com/us/en/contact-hp/phone-assist.html#section1</ulink
+></para>
+</listitem>
+</itemizedlist>
+</section>
+<section id="s_resource-registering-for-SW-tech-support-isc">
+<title>Registering for software technical support and update service</title>
+<indexterm id="v24217507" significance="normal"><primary>software
+technical support service</primary><secondary>registering for</secondary>
+</indexterm>
+<para id="v33876503">HP CloudSystem includes one year of 24 x 7 HP
+Software Technical Support and Update Service. This service provides
+access to HP technical resources for assistance in resolving software
+implementation or operations problems.</para>
+<para id="v33876504">The service also provides access to software
+updates and reference manuals, either in electronic form or on physical
+media as they are made available from HP. Customers who purchase an
+electronic license are eligible for electronic updates only. </para>
+<para id="v33876505">With this service, HP CloudSystem customers benefit
+from expedited problem resolution as well as proactive notification
+and delivery of software updates. For more information about this
+service, see the following website:</para>
+<para id="v33876506"><ulink role="newbrowser"
+url="http://www.hp.com/services/insight">http://www.hp.com/services/insight</ulink
+></para>
+<para id="v33876507">Registration for this service takes place following
+online redemption of the license certificate.</para>
+</section>
+<section id="s_resource-authorized-resellers-isc">
+<title>HP authorized resellers</title>
+<indexterm id="v24217541" significance="normal"><primary>HP</primary>
+<secondary>authorized resellers</secondary></indexterm>
+<para id="v33876510">For the name of the nearest HP authorized reseller,
+see the following sources:</para>
+<itemizedlist id="v33876511">
+<listitem id="v33876512"><para id="v33876513">In the United States,
+see the U.S. HP partner and store locator website:</para><para
+id="v33876514"><ulink url="http://www.hp.com/service_locator">http://www.hp.com/service_locator</ulink
+></para>
+</listitem>
+<listitem id="v33876515"><para id="v33876516">In other locations,
+see the Contact HP worldwide website:</para><para id="v33876517"><ulink
+url="http://www.hp.com/go/assistance">http://www.hp.com/go/assistance</ulink
+></para>
+</listitem>
+</itemizedlist>
+</section>
+<section id="s_resource-documentation-feedback-isc">
+<title>Documentation feedback</title>
+<para id="v21107092"><indexterm significance="normal"><primary>documentation</primary>
+<secondary>providing feedback</secondary></indexterm> <indexterm
+significance="normal"><primary>reporting documentation errors</primary>
+</indexterm>HP is committed to providing documentation that meets
+your needs.</para>
+<para id="v33876520">To help us improve the documentation, send your
+suggestions and comments to:</para>
+<para id="v33876521"><email>docsfeedback@hp.com</email></para>
+<para id="v33876522">In your mail message, include the following information.
+They are located on the front cover.</para>
+<itemizedlist id="v33876523">
+<listitem id="v33876524"><para id="v33876525">Document title</para>
+</listitem>
+<listitem id="v33876526"><para id="v33876527">Published date</para>
+</listitem>
+<listitem id="v33876528"><para id="v33876529">Edition number</para>
+</listitem>
+</itemizedlist>
+<para id="v33876530">Help us pinpoint your concern by posting the
+document title in the Subject line of your mail message.</para>
+</section>
+<section id="s_related-info-iscg">
+<title>Related information</title>
+<para id="v26942304">Use this section to learn about available documentation
+for HP CloudSystem components and related products.</para>
+<section id="s_hp-doc-isc">
+<title>HP CloudSystem documents</title>
+<para id="v21569180">The latest versions of HP CloudSystem manuals
+and white papers, including HP CSA and HP Operations Orchestration,
+can be downloaded from the <citetitle>Enterprise Information Library</citetitle
+> at <ulink role="newbrowser"
+url="http://www.hp.com/go/CloudSystem/docs">http://www.hp.com/go/CloudSystem/docs</ulink
+>.</para>
+<itemizedlist id="v21569182" spacing="compact">
+<title>Documents</title>
+<listitem id="v26708907"><para id="v26708954"><citetitle>HP Helion
+CloudSystem 9.0 Update 1 Administrator Guide</citetitle></para>
+</listitem>
+<listitem id="v26708905"><para id="v26708906"><citetitle>HP Helion
+CloudSystem 9.0 Update 1 Installation Guide</citetitle></para>
+</listitem>
+<listitem id="v34689542"><para id="v34689543"><citetitle>HP Helion
+CloudSystem 9.0 Update 1 Network Planning Guide</citetitle></para>
+</listitem>
+<listitem id="v26708903"><para id="v26708904"><citetitle>HP Helion
+CloudSystem 9.0 Update 1 Release Notes</citetitle></para></listitem>
+<listitem id="v32591986"><para id="v32591987"><citetitle>HP Helion
+CloudSystem 9.0 Update 1 Support Matrix</citetitle></para></listitem>
+<listitem id="v32591988"><para id="v32591989"><citetitle>HP Helion
+CloudSystem 9.0 Update 1 Troubleshooting Guide</citetitle></para>
+</listitem>
+<listitem><para><citetitle>HP Helion CloudSystem Migration Guide:
+8.1 Update 2 to 9.0 Update 1</citetitle></para></listitem>
+<listitem id="v26749287"><para id="v26749308"><citetitle>HP Helion
+CloudSystem Operations Console Help</citetitle></para></listitem>
+</itemizedlist>
+<itemizedlist spacing="compact">
+<title>White papers</title>
+<listitem><para><citetitle>HP Helion CloudSystem 9.0: Centralized
+Logging</citetitle></para></listitem>
+<listitem><para><citetitle>HP Helion CloudSystem 9.0: Configuring
+Multitenancy Using OpenLDAP or Microsoft Active Directory</citetitle
+></para></listitem>
+<listitem><para><citetitle>HP Helion CloudSystem 9.0: Deploying Multi-tier
+applications with HP OneView and Helion OpenStack technology in a
+multi-tenant environment</citetitle></para></listitem>
+<listitem><para><citetitle>HP Helion CloudSystem 9.0: Managing multiple
+hypervisors with OpenStack technology</citetitle></para></listitem>
+<listitem><para><citetitle>HP Helion CloudSystem 9.0: Monasca (Monitoring)
+Agent</citetitle></para></listitem>
+<listitem><para><citetitle>HP Helion CloudSystem 9.0: Networking configuration
+and troubleshooting</citetitle></para></listitem>
+<listitem><para><citetitle>HP Helion CloudSystem 9.0: Performance
+and Scalability Solution with KVM and ESXi Hypervisors</citetitle
+></para></listitem>
+<listitem><para><citetitle>HP Helion CloudSystem 9.0: Using an HP
+Operations Orchestration Remote Action Server</citetitle></para>
+</listitem>
+<listitem><para><citetitle>HP Helion CloudSystem 9.0: Using VMware
+ESXi Clusters as Compute Nodes</citetitle></para></listitem>
+<listitem><para><citetitle>HP Helion CloudSystem 9.0: Using Windows
+Hyper-V Server 2012 R2 as Compute Nodes</citetitle></para></listitem>
+</itemizedlist>
+<para id="v21891137">Online help for the CloudSystem Operations Console
+is available by clicking the help control button in the Console user
+interface: <inlinemediaobject><imageobject><imagedata
+contentdepth="16px" contentwidth="17px" fileref="img/icon-help.jpg"
+id="v22319610"/></imageobject></inlinemediaobject> </para>
+</section>
+<section id="s_hos-docs-isc">
+<title>HP Helion OpenStack documents</title>
+<para id="v32591991">The latest version of HP Helion OpenStack information
+is viewable from <citetitle>HP Helion Documentation</citetitle> at <ulink
+url="http://docs.hpcloud.com/">http://docs.hpcloud.com</ulink>, including
+information about the following products:</para>
+<itemizedlist id="v32591992">
+<listitem id="v32591993"><para id="v32591994">HP Helion OpenStack</para>
+</listitem>
+<listitem id="v32591995"><para id="v32591996">HP Helion OpenStack
+Community</para></listitem>
+<listitem id="v32591997"><para id="v32591998">HP Helion Development
+Platform</para></listitem>
+<listitem id="v32591999"><para id="v32592000">HP Helion Eucalyptus</para>
+</listitem>
+</itemizedlist>
+<para id="v32592003">The full list of HP CSA documentation can be
+accessed from the HP Cloud Service Automation tab.</para>
+</section>
+<section id="s_hp-doc-im-isc">
+<title>HP Insight Management documents</title>
+<para id="v26708997">The latest versions of HP Matrix Operating Environment
+manuals, white papers, and the <citetitle>HP Insight Management Support
+Matrix</citetitle> can be downloaded from the <citetitle>HP Enterprise
+Information Library</citetitle> at <ulink
+url="http://www.hp.com/go/matrixoe/docs">http://www.hp.com/go/matrixoe/docs</ulink
+>, including the following documents:</para>
+<para id="v26720251"><itemizedlist id="v26708998" spacing="compact">
+<listitem id="v26708999"><para id="v26709000"><citetitle>HP Matrix
+Operating Environment Release Notes</citetitle></para></listitem>
+<listitem id="v26709001"><para id="v26709002"><citetitle>HP Insight
+Management Support Matrix</citetitle></para></listitem>
+<listitem id="v26709003"><para id="v26709004"><citetitle>HP Matrix
+Operating Environment Infrastructure Orchestration User Guide</citetitle
+></para></listitem>
+<listitem id="v26709005"><para id="v26709006"><citetitle>Cloud bursting
+with HP CloudSystem Matrix infrastructure orchestration</citetitle
+></para></listitem>
+</itemizedlist></para>
+</section>
+<section id="s_3rd-party-doc-isc">
+<title>Third-party documents</title>
+<para id="v26720252">CloudSystem incorporates OpenStack technology
+(listed below), and interoperates with other third-party virtualization
+software.<itemizedlist id="v22319625" spacing="compact">
+<title>OpenStack Juno</title>
+<listitem id="v22319626"><para id="v22048608"><emphasis><ulink
+role="newbrowser" url="http://docs.openstack.org/juno/">OpenStack
+Documentation for Juno releases</ulink></emphasis></para><para>With
+few exceptions (such as installation information), OpenStack documents
+are always set to display the current release stream on the OpenStack
+document web site. </para>
+<para id="v26709007"><itemizedlist spacing="compact">
+<listitem><para><citetitle>Cloud Administrator Guide</citetitle></para>
+</listitem>
+<listitem><para><citetitle>Virtual Machine Image Guide</citetitle
+></para></listitem>
+<listitem><para><citetitle>API Quick Start</citetitle></para></listitem>
+<listitem><para><citetitle>Admin User Guide</citetitle></para>
+</listitem>
+<listitem><para><citetitle>End User Guide</citetitle></para><para
+><itemizedlist spacing="compact">
+<listitem><para>Command reference</para>
+<itemizedlist spacing="compact">
+<listitem><para>Keystone commands</para></listitem>
+<listitem><para>Glance commands</para></listitem>
+<listitem><para>Neutron commands</para></listitem>
+<listitem><para>Nova commands</para></listitem>
+<listitem><para>Cinder commands</para></listitem>
+</itemizedlist>
+</listitem>
+</itemizedlist></para>
+</listitem>
+</itemizedlist></para>
+</listitem>
+</itemizedlist></para>
+<para id="v26720253"><itemizedlist id="v26709008" spacing="compact">
+<title>VMware</title>
+<listitem id="v26709009"><para id="v26709010"><ulink role="newbrowser"
+url="https://www.vmware.com/support/pubs/vsphere-esxi-vcenter-server-pubs.html"
+>VMware vSphere documents</ulink></para></listitem>
+</itemizedlist></para>
+<para id="v32592004"><itemizedlist spacing="compact">
+<title>Microsoft</title>
+<listitem><para><ulink role="newbrowser"
+url="https://technet.microsoft.com/en-us/library/bb625087.aspx">Microsoft
+Windows Server documents</ulink></para></listitem>
+<listitem><para><ulink role="newbrowser"
+url="https://technet.microsoft.com/en-us/library/cc753637.aspx">Microsoft
+Hyper-V documents</ulink></para></listitem>
+</itemizedlist></para>
+<para id="v26749313"><itemizedlist spacing="compact">
+<title>Red Hat</title>
+<listitem><para><ulink role="newbrowser"
+url="https://access.redhat.com/site/documentation/en-US/Red_Hat_Enterprise_Linux/6/index.html"
+>Red Hat Enterprise Linux 6 documents</ulink></para></listitem>
+<listitem><para><ulink role="newbrowser"
+url="https://access.redhat.com/site/documentation/en-US/Red_Hat_Enterprise_Linux/7/index.html"
+>Red Hat Enterprise Linux 7 documents</ulink></para></listitem>
+</itemizedlist></para>
+</section>
+<section id="s_hp-doc-3par-isc">
+<title>HP 3PAR StoreServ documents</title>
+<para id="v32592005">The latest versions of HP 3PAR StoreServ Storage
+manuals are available from the <guilabel moreinfo="none">Storage</guilabel
+> tab at the top of the <ulink role="newbrowser"
+url="http://www.hp.com/go/CloudSystem/docs">Enterprise Information
+Library</ulink>.</para>
+<para id="v26709012">HP 3PAR StoreServ Storage manuals can also be
+downloaded from the <citetitle>HP Support Center</citetitle>, including
+the following documents:<itemizedlist spacing="compact">
+<listitem><para><citetitle>HP 3PAR StoreServ Storage Concepts Guide</citetitle
+></para></listitem>
+<listitem><para><citetitle>HP 3PAR StoreServ Storage Troubleshooting
+Guide</citetitle></para></listitem>
+</itemizedlist></para>
+</section>
+<section id="s_hp-doc-storevirt-isc">
+<title>HP VSA StoreVirtual documents</title>
+<para id="v32592006">The latest versions of HP VSA StoreVirtual Storage
+manuals are available from the <guilabel moreinfo="none">Storage</guilabel
+> tab at the top of the <ulink role="newbrowser"
+url="http://www.hp.com/go/CloudSystem/docs">Enterprise Information
+Library</ulink>.</para>
+<para id="v32592007">HP VSA StoreVirtual Storage manuals can also
+be downloaded from the <citetitle>HP Support Center</citetitle>, including
+the following document:<itemizedlist spacing="compact">
+<listitem><para><citetitle>HP StoreVirtual Storage User Guide</citetitle
+></para></listitem>
+</itemizedlist></para>
+</section>
+<section id="s_servers-info-isc">
+<title>HP ProLiant servers documents</title>
+<para id="v26720254"><itemizedlist id="v21107095" spacing="compact">
+<listitem id="v21107104"><para>The <citetitle>HP Integrated Lights-Out
+QuickSpecs</citetitle> contain support information and are available
+from the QuickSpecs website:</para><para id="v21107106"><ulink
+url="http://www.hp.com/go/qs">http://www.hp.com/go/qs</ulink></para>
+</listitem>
+<listitem><para>HP ProLiant servers:</para>
+<itemizedlist spacing="compact">
+<listitem><para>ProLiant BL BladeSystem servers:</para><para><ulink
+role="newbrowser" url="http://www.hp.com/go/blades">http://www.hp.com/go/blades</ulink
+></para>
+</listitem>
+<listitem><para>ProLiant DL, ML, and SL servers:</para><para><ulink
+role="newbrowser"
+url="http://www8.hp.com/us/en/products/servers/proliant-servers.html"
+>http://www8.hp.com/us/en/products/servers/proliant-servers.html</ulink
+></para>
+</listitem>
+</itemizedlist>
+</listitem>
+</itemizedlist></para>
+</section>
+</section>
+</chapter>
+<index id="v30836301"></index>
+</book>
