@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--Arbortext, Inc., 1988-2014, v.4002-->
 <!DOCTYPE book PUBLIC "-//Hewlett-Packard ESS//DTD DocBook V4.2-Based Extension//EN"
- "C:/Program Files (x86)/PTC/Arbortext Editor/custom/doctypes/ess/ess.dtd">
+ "./ess.dtd">
 <book id="cs-support-901">
 <title>HP Helion CloudSystem 9.0 Update 1 Support Matrix</title>
 <bookinfo id="v30835749">
