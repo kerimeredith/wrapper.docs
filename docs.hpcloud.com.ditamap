@@ -18,7 +18,6 @@
   <!--permalink: -->
   <!--permalink: /-->
   <topicref href="home.dita"/>
-  c
   <mapref href="devplatform/docs.hpcloud.com.HDP.ditamap" format="ditamap"/>
   <mapref href="docs.hpcloud.com.HCF.0.10.TP.ditamap" format="ditamap"/>
   <mapref href="docs.hpcloud.com.CGH.20.ditamap" format="ditamap"/>
